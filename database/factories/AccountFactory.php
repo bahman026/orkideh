@@ -21,10 +21,10 @@ class AccountFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::query()->inRandomOrder()->first() ?? User::factory(),
+            'user_id' => User::query()->inRandomOrder()?->first() ?? User::factory(),
             'account_number' => fake()->unique()->numerify('####################'),
             'account_name' => fake()->randomElement(AccountNameEnum::cases()),
-            'balance' => fake()->numberBetween(1000, 50000000),
+            'balance' => fake()->numberBetween(100000, 10000000),
         ];
     }
 }
