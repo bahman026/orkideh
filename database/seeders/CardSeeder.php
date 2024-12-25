@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\Account;
+use App\Models\Card;
 use Illuminate\Database\Seeder;
 
-class AccountSeeder extends Seeder
+class CardSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Account::factory()->count(30)->create();
+        Card::factory()->count(30)->create();
     }
 }
