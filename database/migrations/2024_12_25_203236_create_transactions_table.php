@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('source_card_id')->constrained('cards');
-            $table->foreignId('destination_card')->constrained('cards');
+            $table->foreignId('destination_card_id')->constrained('cards');
             $table->unsignedBigInteger('amount');
             $table->timestamps();
         });
