@@ -22,7 +22,7 @@ class CardFactory extends Factory
     {
 
         return [
-            'account_id' => Account::query()->inRandomOrder()->first() ?? Account::factory(),
+            'account_id' => Account::query()->inRandomOrder()?->first() ?? Account::factory(),
             'card_number' => function ($attributes) {
                 $account_name = Account::query()->find($attributes['account_id'])->account_name;
                 $numbers = $account_name->numbers();
