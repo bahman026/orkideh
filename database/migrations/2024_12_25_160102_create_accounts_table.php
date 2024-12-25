@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->string('account_number')->unique();
+            $table->string('account_name');
             $table->unsignedBigInteger('balance')->default(0);
             $table->timestamps();
         });
