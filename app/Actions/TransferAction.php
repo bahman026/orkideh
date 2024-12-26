@@ -7,6 +7,7 @@ namespace App\Actions;
 use App\DTOs\TransactionDTO;
 use App\Exceptions\InsufficientBalanceException;
 use App\Http\Requests\TransferRequest;
+use App\Jobs\TransactionEmailJob;
 use App\Models\Card;
 use App\Models\Transaction;
 use Exception;
@@ -40,8 +41,7 @@ class TransferAction
 
             $transaction = Transaction::query()->create($transactionDto->toArray());
 
-            // ارسال ایمیل به مبدا و مقصد (نمونه‌سازی)
-            // event(new TransactionProcessed($transaction));
+            TransactionEmailJob::dispatch($transaction);
 
             DB::commit();
 
