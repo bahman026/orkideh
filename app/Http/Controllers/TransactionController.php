@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Actions\FetchTopUserAction;
 use App\Actions\TransferAction;
 use App\Http\Requests\TransferRequest;
 use Illuminate\Http\JsonResponse;
@@ -19,5 +20,12 @@ class TransactionController extends Controller
         $result = $transferAction($request);
 
         return response()->json(['message' => 'تراکنش با موفقیت انجام شد.', 'transaction' => $result]);
+    }
+
+    public function topUsers(FetchTopUserAction $fetchTopUserAction): JsonResponse
+    {
+        $result = $fetchTopUserAction();
+
+        return response()->json($result);
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -58,5 +59,19 @@ class User extends Authenticatable
     public function accounts(): HasMany
     {
         return $this->hasMany(Account::class);
+    }
+
+    public static function getTopUsers(): Builder
+    {
+        return User::query()
+            ->select('users.id', 'users.name')
+            ->join('accounts', 'accounts.user_id', '=', 'users.id')
+            ->join('cards', 'cards.account_id', '=', 'accounts.id')
+            ->join('transactions', function ($join) {
+                $join->on('transactions.source_card_id', '=', 'cards.id')
+                    ->orOn('transactions.destination_card_id', '=', 'cards.id');
+            })
+            ->groupBy('users.id')
+            ->orderByRaw('COUNT(transactions.id) DESC');
     }
 }
