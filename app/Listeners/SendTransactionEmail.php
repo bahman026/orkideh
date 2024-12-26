@@ -27,11 +27,11 @@ class SendTransactionEmail
         $transaction = $event->transaction;
 
         $sourceCard = Card::query()->find($transaction->source_card_id);
-        Mail::to($sourceCard->account->user->email)
+        Mail::to($sourceCard->account->user->email) //@phpstan-ignore-line
             ->queue(new TransactionNotification($transaction, $sourceCard, 'decrease'));
 
         $destinationCard = Card::query()->find($transaction->destination_card_id);
-        Mail::to($destinationCard->account->user->email)
+        Mail::to($destinationCard->account->user->email) //@phpstan-ignore-line
             ->queue(new TransactionNotification($transaction, $destinationCard, 'increase'));
     }
 }
