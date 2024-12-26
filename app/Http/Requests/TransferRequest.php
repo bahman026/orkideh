@@ -18,13 +18,13 @@ class TransferRequest extends FormRequest
         return [
             'source_card_id' => [
                 'required',
-                'exists:cards,id',
+                'exists:cards,card_number',
                 'regex:/^(6273-81|5022-29|5057-85|5028-06|6221-06|5029-08|6391-94)\d{2}-\d{4}-\d{4}$/',
             ],
 
             'destination_card_id' => [
                 'required',
-                'exists:cards,id',
+                'exists:cards,card_number',
                 'different:source_card_id',
                 'regex:/^(6273-81|5022-29|5057-85|5028-06|6221-06|5029-08|6391-94)\d{2}-\d{4}-\d{4}$/',
             ],
