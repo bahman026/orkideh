@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
+use App\DTOs\TransactionDTO;
 use App\Exceptions\InsufficientBalanceException;
 use App\Http\Requests\TransferRequest;
 use App\Models\Card;
@@ -31,11 +32,13 @@ class TransferAction
             $sourceCard->account->decrement('balance', $request->amount);
             $destinationCard->account->increment('balance', $request->amount);
 
-            $transaction = Transaction::query()->create([
-                'source_card_id' => $sourceCard->id,
-                'destination_card_id' => $destinationCard->id,
-                'amount' => $request->amount,
-            ]);
+            $transactionDto = new TransactionDTO(
+                $sourceCard->id,
+                $destinationCard->id,
+                (int) $request->amount,
+            );
+
+            $transaction = Transaction::query()->create($transactionDto->toArray());
 
             // ارسال ایمیل به مبدا و مقصد (نمونه‌سازی)
             // event(new TransactionProcessed($transaction));
