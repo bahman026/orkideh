@@ -73,7 +73,7 @@ class TransferActionTest extends TestCase
 
         $response->assertStatus(400);
         $response->assertJson([
-            'message' => 'موجودی کافی نیست',
+            'message' => __('messages.insufficient_balance'),
         ]);
 
         $this->assertDatabaseHas('accounts', [

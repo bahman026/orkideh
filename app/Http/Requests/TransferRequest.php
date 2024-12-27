@@ -40,17 +40,17 @@ class TransferRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'source_card_id.required' => 'شماره کارت مبدا الزامی است.',
-            'source_card_id.exists' => 'کارت مبدا معتبر نیست.',
-            'destination_card_id.required' => 'شماره کارت مقصد الزامی است.',
-            'destination_card_id.exists' => 'کارت مقصد معتبر نیست.',
-            'destination_card_id.different' => 'کارت مبدا و مقصد نباید یکسان باشند.',
-            'amount.required' => 'مبلغ انتقال الزامی است.',
-            'amount.numeric' => 'مبلغ انتقال باید عددی باشد.',
-            'amount.min' => 'حداقل مبلغ انتقال ۱۰۰۰ تومان است.',
-            'amount.max' => 'حداکثر مبلغ انتقال ۵۰ میلیون تومان است.',
-            'source_card_id.regex' => 'کارت مبدا معتبر نیست.',
-            'destination_card_id.regex' => 'کارت مقصد معتبر نیست.',
+            'source_card_id.required' => __('validation.source_card_required'),
+            'source_card_id.exists' => __('validation.source_card_invalid'),
+            'source_card_id.regex' => __('validation.source_card_format'),
+            'destination_card_id.required' => __('validation.destination_card_required'),
+            'destination_card_id.exists' => __('validation.destination_card_invalid'),
+            'destination_card_id.different' => __('validation.destination_card_different'),
+            'destination_card_id.regex' => __('validation.destination_card_format'),
+            'amount.required' => __('validation.amount_required'),
+            'amount.numeric' => __('validation.amount_numeric'),
+            'amount.min' => __('validation.amount_min'),
+            'amount.max' => __('validation.amount_max'),
         ];
     }
 }

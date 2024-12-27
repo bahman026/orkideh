@@ -12,7 +12,7 @@ class InsufficientBalanceException extends Exception
     public function render(): JsonResponse
     {
         return response()->json([
-            'message' => 'موجودی کافی نیست',
+            'message' => __('messages.insufficient_balance'),
         ], 400);
     }
 }
