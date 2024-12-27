@@ -9,7 +9,6 @@ use App\Models\Card;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use const _PHPStan_4afa27bf8\__;
 
 class TransferActionTest extends TestCase
 {
