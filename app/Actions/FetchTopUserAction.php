@@ -20,7 +20,7 @@ class FetchTopUserAction
     public function __invoke(): \Illuminate\Support\Collection
     {
         $tenMinutesAgo = Carbon::now()->subMinutes(10);
-        $topUsers = $this->userRepository->getTopUsers()//@phpstan-ignore-line
+        $topUsers = $this->userRepository->getTopUsers() //@phpstan-ignore-line
             ->where('transactions.created_at', '>=', $tenMinutesAgo)
             ->limit(3)
             ->get();
@@ -28,7 +28,7 @@ class FetchTopUserAction
         /** @var Collection<int, User> $topUsers */
         return $topUsers->map(function (User $user): array {
 
-            $transactions = $this->transactionRepository->getUserTransactions($user->id)//@phpstan-ignore-line
+            $transactions = $this->transactionRepository->getUserTransactions($user->id) //@phpstan-ignore-line
                 ->limit(10)
                 ->get();
 
