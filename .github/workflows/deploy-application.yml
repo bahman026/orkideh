@@ -40,10 +40,10 @@ jobs:
         run: |
           ./vendor/bin/pint --test
 
-      - name: Run Pest Tests
+      - name: Run Tests
         working-directory: ./
         run: |
-          ./vendor/bin/pest
+          php artisan test
 
       - name: Run PHPStan Analysis
         working-directory: ./
