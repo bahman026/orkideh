@@ -9,6 +9,7 @@ use App\Models\Card;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use const _PHPStan_4afa27bf8\__;
 
 class TransferActionTest extends TestCase
 {
@@ -73,7 +74,7 @@ class TransferActionTest extends TestCase
 
         $response->assertStatus(400);
         $response->assertJson([
-            'message' => 'موجودی کافی نیست',
+            'message' => __('messages.insufficient_balance'),
         ]);
 
         $this->assertDatabaseHas('accounts', [
