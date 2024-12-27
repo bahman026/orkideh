@@ -1,10 +1,10 @@
 #!/bin/bash
+#This bash is not for production environment
 
 composer install
 npm i
 npm run build
 
-#remove this code from production
 php artisan key:generate
 
 php artisan migrate --seed
