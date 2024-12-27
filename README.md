@@ -38,18 +38,12 @@ The Orkideh Banking API system has been developed to handle core banking functio
       ```bash
       sudo docker exec -it -u www-data orkideh_app bash
       ```
-6. **Email Notifications:**
-    - TSends email notifications for every successful transaction.
-    - Uses Laravel jobs and queues to handle email dispatching efficiently.
-    - Ensure the queue worker is running to process email jobs.
-      ```bash
-      sudo sudo docker exec -it -u www-data orkideh_app bash
-      ```
-
-      ```bash
-      php artisan queue:work
-      ```
-
+6. **Api Endpoint:**
+    - Transactions
+      - ```POST /transactions/transfer``` : Transfer funds between cards.
+      - ```GET /transactions/top-users``` : Get a list of top users.
+    - Telescope
+      - ```/telescope```: Access the Laravel Telescope debugging tool (if enabled).
 
 ---
 
@@ -63,6 +57,9 @@ The Orkideh Banking API system has been developed to handle core banking functio
    ```bash
    sudo docker compose up -d --build
    ```
+   - By default, the application will be accessible at: ```http://127.0.0.1:8035/```
+
+
 3. Access the application through the container by using the following command:
    ```bash
    sudo docker exec -it -u www-data orkideh_app bash
