@@ -65,6 +65,20 @@ The Orkideh Banking API system has been developed to handle core banking functio
    sudo docker compose up -d --build
    ```
    - By default, the application will be accessible at: ```http://127.0.0.1:8035/```
+   - Please note that due to the execution of the ENTRYPOINT ["./run.sh"] script, it might take a few seconds for the application to fully load.
+   - The commands executed in the run.sh file are:
+   ```bash
+    composer install
+    npm i
+    npm run build
+
+    # Remove this line in production environment
+    php artisan key:generate
+
+    php artisan migrate --seed
+    php artisan storage:link
+   ```
+
 
 
 4. Access the application through the container by using the following command:
