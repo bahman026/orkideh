@@ -19,7 +19,10 @@ class TransactionController extends Controller
     {
         $result = $transferAction($request);
 
-        return response()->json(['message' => 'تراکنش با موفقیت انجام شد.', 'transaction' => $result]);
+        return response()->json([
+            'message' => __('messages.transaction_successful'),
+            'transaction' => $result,
+        ]);
     }
 
     public function topUsers(FetchTopUserAction $fetchTopUserAction): JsonResponse
