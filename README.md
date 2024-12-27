@@ -53,19 +53,26 @@ The Orkideh Banking API system has been developed to handle core banking functio
    git clone <repository_url>
    cd <project_directory>
    ```
-2. Build and start the container using Docker Compose:
+
+   
+2. Create .env
+   ```bash
+   cp .env.example  .env
+   ```
+   
+3. Build and start the container using Docker Compose:
    ```bash
    sudo docker compose up -d --build
    ```
    - By default, the application will be accessible at: ```http://127.0.0.1:8035/```
 
 
-3. Access the application through the container by using the following command:
+4. Access the application through the container by using the following command:
    ```bash
    sudo docker exec -it -u www-data orkideh_app bash
    ```
-4. Test the API endpoints using tools such as Postman or cURL.
-5. For email functionality, ensure the queue worker is running inside the container:
+5. Test the API endpoints using tools such as Postman or cURL.
+6. For email functionality, ensure the queue worker is running inside the container:
    ```bash
    php artisan queue:work
    ```
